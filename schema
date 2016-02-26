@@ -1,0 +1,5 @@
+CREATE TABLE ca_ipv6_data(
+date TEXT,
+caname TEXT,
+hostname TEXT,
+status TEXT);
