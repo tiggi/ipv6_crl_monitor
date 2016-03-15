@@ -29,7 +29,53 @@ function get_dates() {
 	return(db_query_get_array("SELECT DISTINCT date FROM ca_ipv6_data ORDER BY 1"));
 }
 
+function get_CAs($date) {
+	global $db;
+	$CAs=db_query_get_array("SELECT DISTINCT caname FROM ca_ipv6_data");
+	$good=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"works\"");
+	$bad=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"ipv4\"");
+	$ugly=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data  WHERE status=\"AAAA\"");
 
+	//print_r($good);
+	$report=Array();
+	foreach($CAs as $a=>$current) {
+			$c_good=checkfor($good,$current['caname'],"works");
+			$c_bad=checkfor($bad,$current['caname'],"ipv4");
+			$c_ugly=checkfor($ugly,$current['caname'],"AAAA");
+	
+			if ($c_good) {
+				$report[]=Array($current['caname'],"works");
+			}
+			elseif ($c_ugly) {
+				$report[]=Array($current['caname'],"AAAA");
+			}
+			elseif ($c_bad) {
+				$report[]=Array($current['caname'],"ipv4");
+			}
+	}
+	return $report;
+
+}
+
+function checkfor($ca_array,$ca,$type) {
+
+	foreach($ca_array as $idx=>$name) {
+		//print_r($name);
+		if (($name['caname'] == $ca) && ($name['status'] == $type)) return true;
+	}
+	return false;
+}
+
+function count_states($ca_array) {
+	$result=Array();
+	$result['ipv4']=0;
+	$result['AAAA']=0;
+	$result['works']=0;
+	foreach ($ca_array as $current) {
+		$result[$current[1]]++;
+	}
+	return $result;
+}
 
 ?>
 
