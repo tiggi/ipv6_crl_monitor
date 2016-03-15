@@ -5,6 +5,7 @@ $db=db_open("ipv6.sqlite");
 
 $dates=get_dates();
 
+print("<html>\n");
 
 print("IPv6 CRL distribution point IPv6 accessibility status");
 print("<br>Trying = At least one CRL distribution point has AAAA record, but it does not work\n");
@@ -23,7 +24,7 @@ function print_overview($dates) {
 		$CAs=get_CAs($current);
 		$states=count_states($CAs);
 		print("<tr>\n");
-		print("<td>" . $current['date'] . "</td>\n");
+		print("<td><a href=\"specific.php?date=" . $current['date'] . "\">" . $current['date'] . "</a></td>\n");
 		print("<td>" . $states['works'] . "</td>\n");
 		print("<td>" . $states['AAAA'] . "</td>\n");
 		print("<td>" . $states['ipv4'] . "</td>\n");
@@ -33,4 +34,5 @@ function print_overview($dates) {
 
 }
 
+print("</html>\n");
 ?>
