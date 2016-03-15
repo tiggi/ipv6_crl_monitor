@@ -83,6 +83,14 @@ function validate_date($date) {
 	return false;
 }
 
+function get_css() {
+	print("\n<style>\n");
+	print("td.works { background: green; }\n");
+	print("td.ipv4 { background: red; }\n");
+	print("td.AAAA{ background: yellow; }\n");
+	print("</style>\n");
+}
+
 
 ?>
 
