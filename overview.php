@@ -5,7 +5,14 @@ $db=db_open("ipv6.sqlite");
 
 $dates=get_dates();
 
+
+print("IPv6 CRL distribution point IPv6 accessibility status");
+print("<br>Trying = At least one CRL distribution point has AAAA record, but it does not work\n");
+print("<br>Broken = IPv4 only");
+
 print_overview($dates);
+
+
 
 function print_overview($dates) {
 

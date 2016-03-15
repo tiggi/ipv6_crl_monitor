@@ -26,7 +26,7 @@ function db_query_get_array($query) {
 function get_dates() {
 	global $db;
 
-	return(db_query_get_array("SELECT DISTINCT date FROM ca_ipv6_data ORDER BY 1"));
+	return(db_query_get_array("SELECT DISTINCT date FROM ca_ipv6_data ORDER BY 1 DESC"));
 }
 
 function get_CAs($date) {
