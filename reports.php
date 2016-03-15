@@ -77,5 +77,12 @@ function count_states($ca_array) {
 	return $result;
 }
 
+function validate_date($date) {
+	$ret=preg_match("/^([0-9]{4})-([0-9][0-9])-([0-9][0-9])$/",$date);
+	if ($ret==1) return true;
+	return false;
+}
+
+
 ?>
 

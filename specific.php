@@ -9,6 +9,10 @@ if (isset($_GET['date'])) {
 	$date="2016-03-15";
 }
 
+if (!validate_date($date)) { 
+	die("Invalid date\n");
+}
+
 if (isset($_GET['type'])) {
 	$type=$_GET['type'];
 } else {
@@ -45,7 +49,7 @@ function print_specific($date) {
 }
 
 function get_css() {
-	print("<style>");
+	print("\n<style>\n");
 	print("td.works { background: green; }\n");
 	print("td.ipv4 { background: red; }\n");
 	print("td.AAAA{ background: yellow; }\n");
