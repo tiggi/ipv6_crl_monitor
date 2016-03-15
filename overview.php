@@ -9,7 +9,8 @@ print("<html>\n");
 get_css();
 
 print("IPv6 CRL distribution point IPv6 accessibility status");
-print("<br>Trying = At least one CRL distribution point has AAAA record, but it does not work\n");
+print("<br>Good = At least one CRL distribution point has an AAAA record and it can be contacted\n");
+print("<br>Trying = At least one CRL distribution point has an AAAA record, but connecting to it over IPv6 does not work\n");
 print("<br>Broken = IPv4 only");
 
 print_overview($dates);
