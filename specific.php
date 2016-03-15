@@ -16,6 +16,7 @@ if (isset($_GET['type'])) {
 }
 
 print("<html>\n");
+get_css();
 print("Description: <br> works = IPv6 works fine on at least one CRL distribution point\n");
 print("<br>AAAA = At least one CRL distribution point has an AAAA record in DNS, but it is not reachable\n");
 print("<br>ipv4 = All CRL distribution points are IPv4 only\n<br>\n");
@@ -36,12 +37,24 @@ function print_specific($date) {
 	foreach ($CAs as $idx => $current) {
 		print("<tr>\n");
 		print("<td>" . $current[0] . "</td>\n");
-		print("<td>" . $current[1] . "</td>\n");
+		print("<td class=\"" . $current[1] . "\">" . $current[1] . "</td>\n");
 		print("</tr>\n");
 	}
 	print("</table>\n");
 
 }
 
+function get_css() {
+	print("<style>");
+	print("td.works { background: green; }\n");
+	print("td.ipv4 { background: red; }\n");
+	print("td.AAAA{ background: yellow; }\n");
+	print("</style>\n");
+}
+
+
 print("</html>\n");
+
+
 ?>
+
