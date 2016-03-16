@@ -62,7 +62,7 @@ function check_aaaa($hostnames) {
 
 function check_connectivity($ipv6) {
 	// Try opening a TCP-connection to the IPv6 address on port 80
-	$fp = fsockopen("[" . $ipv6 . "]",80,$errno,$srrstr,10);
+	$fp = @fsockopen("[" . $ipv6 . "]",80,$errno,$srrstr,10);
 	
 	if (!$fp) {
 		return false;
@@ -78,7 +78,7 @@ function insert_database($caname,$hostname,$status) {
 	global $db;
 
 	$today = date('Y-m-d');
-	print("$caname - $hostname - $status\n");
+	//print("$caname - $hostname - $status\n");
 	$statement=$db->prepare("INSERT INTO ca_ipv6_data VALUES(:date,:caname,:hostname,:status)");
 	$statement->bindValue(':date',$today,SQLITE3_TEXT);
 	$statement->bindValue(':caname',$caname,SQLITE3_TEXT);
