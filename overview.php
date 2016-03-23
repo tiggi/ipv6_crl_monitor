@@ -23,7 +23,7 @@ function print_overview($dates) {
 	print("<table border=\"1\">\n");
 	print("<tr><th>Date</th><th>Good</th><th>Trying</th><th>Broken</th></tr>\n");
 	foreach ($dates as $idx => $current) {
-		$CAs=get_CAs($current);
+		$CAs=get_CAs($current['date']);
 		$states=count_states($CAs);
 		print("<tr>\n");
 		print("<td><a href=\"specific.php?date=" . $current['date'] . "\">" . $current['date'] . "</a></td>\n");

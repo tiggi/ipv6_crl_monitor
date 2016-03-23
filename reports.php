@@ -31,10 +31,10 @@ function get_dates() {
 
 function get_CAs($date) {
 	global $db;
-	$CAs=db_query_get_array("SELECT DISTINCT caname FROM ca_ipv6_data");
-	$good=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"works\"");
-	$bad=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"ipv4\"");
-	$ugly=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data  WHERE status=\"AAAA\"");
+	$CAs=db_query_get_array("SELECT DISTINCT caname FROM ca_ipv6_data WHERE date=\"" . $date . "\"");
+	$good=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"works\" and date=\"" . $date . "\"");
+	$bad=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data WHERE status=\"ipv4\" and date=\"" . $date . "\"");
+	$ugly=db_query_get_array("SELECT DISTINCT caname,status FROM ca_ipv6_data  WHERE status=\"AAAA\" and date=\"" . $date . "\"");
 
 	//print_r($good);
 	$report=Array();
