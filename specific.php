@@ -40,7 +40,9 @@ function print_specific($date) {
 	print("<tr><th>CA</th><th>Status</th></tr>\n");
 	foreach ($CAs as $idx => $current) {
 		print("<tr>\n");
+		// CA name
 		print("<td>" . $current[0] . "</td>\n");
+		// status with colouring 
 		print("<td class=\"" . $current[1] . "\">" . $current[1] . "</td>\n");
 		print("</tr>\n");
 	}
@@ -49,6 +51,7 @@ function print_specific($date) {
 }
 
 
+print("<hr>Service run by Ulf Tigerstedt, NDGF-T1<br>\n");
 print("</html>\n");
 
 

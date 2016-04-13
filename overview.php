@@ -36,5 +36,6 @@ function print_overview($dates) {
 
 }
 
+print("<hr>Service run by Ulf Tigerstedt, NDGF-T1<br>\n");
 print("</html>\n");
 ?>
